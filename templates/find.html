@@ -1,0 +1,197 @@
+<div class="d-none d-sm-block">
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#/">UMBC TAG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#/">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" target="_self" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Routes
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#/arbutus">Arbututs</a>
+                        <a class="dropdown-item" href="#/arundel">Arundel</a>
+                        <a class="dropdown-item" href="#/catonsville">Catonsville</a>
+                        <a class="dropdown-item" href="#/courtney">Courtney Road</a>
+                        <a class="dropdown-item" href="#/downtown">Downtown</a>
+                        <a class="dropdown-item" href="#/route-40">Route 40</a>
+                    </div>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#/find">Find Activities</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#/suggest">Suggest Activity</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="d-sm-none">
+    <div class="myNavbar">
+        <a href="#/"><i class="fas fa-home"></i><br>Home</a>
+        <a class="active" href="#/find"><i class="fas fa-search"></i><br>Find</a>
+        <a href="#/routes"><i class="fas fa-map"></i><br>Routes</a>
+        <a href="#/suggest"><i class="fas fa-bullhorn"></i><br>Suggest</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h1 class="text-center mt-3">Find Activities</h1>
+
+    <input class="form-control" type="search" placeholder="Search" ng-model="query"><br>
+
+    <div id="sorter">
+        <b>I am looking for an activity that is: </b>
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" id="paid">
+                    <a class="page-link" href="javascript:void(0);" ng-click="setCostOption('paid')">Paid</a>
+                </li>
+                <li class="page-item active" id="paidFree">
+                    <a class="page-link" href="javascript:void(0);" ng-click="setCostOption('paidFree')">Either</a>
+                </li>
+                <li class="page-item" id="free">
+                    <a class="page-link" href="javascript:void(0);" ng-click="setCostOption('free')">Free</a>
+                </li>
+            </ul>
+        </nav>
+
+        <b>I want an activity that involves:</b><br>
+        <div class="row">
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item" id="Entertainment" ng-click="addCategory('Entertainment')">
+                        <div class="text-center">
+                            <i class="fas fa-grin-alt" style="color:goldenrod"></i><br>
+                            <span>Entertainment</span>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item" id="Food" ng-click="addCategory('Food')">
+                        <div class="text-center">
+                            <i class="fas fa-utensils" style="color:gray"></i><br>
+                            <span>Food</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item" id="Shopping" ng-click="addCategory('Shopping')">
+                        <div class="text-center">
+                            <i class="fas fa-shopping-bag" style="color: #e75480"></i><br>
+                            <span>Shopping</span>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item" id="Outdoor" ng-click="addCategory('Outdoor')">
+                        <div class="text-center">
+                            <i class="fas fa-tree" style="color:green"></i><br>
+                            <span>Outdoor</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br>
+        <b>I want to go during a: </b>
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" id="weekday">
+                    <a class="page-link" href="javascript:void(0);" ng-click="setTripTime('weekday')">Weekday</a>
+                </li>
+                <li class="page-item active" id="weekdayWeekend">
+                    <a class="page-link" href="javascript:void(0);" ng-click="setTripTime('weekdayWeekend')">Either</a>
+                </li>
+                <li class="page-item" id="weekend">
+                    <a class="page-link" href="javascript:void(0);" ng-click="setTripTime('weekend')">Weekend</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- <b>The route I want to use is: </b>
+        <select class="form-control" ng-model="selectedRoutes">
+            <option value="any">Any</option>
+            <option value="arbutus">Arbutus</option>
+            <option value="arundel">Arundel</option>
+            <option value="catonsville">Catonsville</option>
+            <option value="courtney">Courtney Road</option>
+            <option value="downtown">Downtown</option>
+            <option value="route-40">Route 40</option>
+        </select> -->
+
+        <hr>
+        <button class="btn btn-success" ng-click="sortActivities()">Find Activities</button>
+        <br>
+    </div><br>
+
+    <h5 id="results">
+        Results ({{sortedActivities.length}})
+        <small style="color: red; float: right; cursor: pointer; " ng-click="clearResults()">Clear Results</small>
+    </h5>
+    <ul class="list-group">
+        <li class="list-group-item" ng-show="sortedActivities.length == 0">
+            No results found. Try adjusting your sort parameters.
+        </li>
+
+        <li class="list-group-item mb-3" ng-repeat="activity in sortedActivities track by $index">
+            <h5 class="mb-0">
+                {{activity.data.title}}
+    
+                <i class="fas fa-grin-alt" style="color:goldenrod" ng-show="activity.data.categories.includes('Entertainment')"></i>
+                <i class="fas fa-shopping-bag" style="color: #e75480" ng-show="activity.data.categories.includes('Shopping')"></i>
+                <i class="fas fa-utensils" style="color:gray" ng-show="activity.data.categories.includes('Food')"></i>
+                <i class="fas fa-tree" style="color:green" ng-show="activity.data.categories.includes('Outdoor')"></i>
+                <i class="fas fa-dollar-sign" style="color:green" ng-show="activity.data.categories.includes('Paid')"></i>
+                <span class="fa-stack" style="font-size:0.63em;" ng-show="activity.data.categories.includes('Free')">
+                    <i class="fas fa-dollar-sign fa-stack-1x" style="color:green"></i>
+                    <i class="fas fa-ban fa-stack-2x" style="color:red"></i>
+                </span>
+            </h5>
+            <hr>
+
+            <p class="mb-0" >
+                <b>Route: </b><a href="#/{{activity.route}}">{{activity.route | capitalize}}</a>
+            </p>
+
+            <p class="mb-0">
+                <b>Stop: </b>{{activity.stop.name}}
+            </p>
+
+            <p class="mb-0" ng-show="activity.data.address != 'N/A'">
+                <b>Address: </b>{{activity.data.address}}
+            </p>
+            <p class="mb-0" ng-show="activity.data.website != 'N/A'">
+                <b>Website: </b>
+                <a href="{{activity.data.website}}">{{activity.data.website}}</a>
+            </p>
+            <p class="mb-0" ng-show="activity.data.categories && activity.data.categories != 'N/A'">
+                <b>Categories: </b>
+                <span>{{activity.data.categories.join(", ")}}</span>
+            </p>
+            <p class="mb-0" ng-show="activity.data.additionalInformation != 'N/A'">
+                <b>Additional Information:</b><br>
+                <span ng-bind-html="to_trusted(activity.data.additionalInformation)"></span>
+            </p>
+            <button class="btn btn-success mt-2" ng-click="copyLink(activity, $event)">
+                <i class="fas fa-link"></i> Get Shareable Link
+            </button>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,202 @@
+<div class="d-none d-sm-block">
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#/">UMBC TAG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#/">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" target="_self" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Routes
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#/arbutus">Arbututs</a>
+                        <a class="dropdown-item" href="#/arundel">Arundel</a>
+                        <a class="dropdown-item" href="#/catonsville">Catonsville</a>
+                        <a class="dropdown-item" href="#/courtney">Courtney Road</a>
+                        <a class="dropdown-item" href="#/downtown">Downtown</a>
+                        <a class="dropdown-item" href="#/route-40">Route 40</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#/find">Find Activities</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#/suggest">Suggest Activity</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="d-sm-none">
+    <div class="myNavbar">
+        <a href="#/"><i class="fas fa-home"></i><br>Home</a>
+        <a href="#/find"><i class="fas fa-search"></i><br>Find</a>
+        <a class="active" href="#/routes"><i class="fas fa-map"></i><br>Routes</a>
+        <a href="#/suggest"><i class="fas fa-bullhorn"></i><br>Suggest</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h1 class="mb-3 text-center">Routes</h1>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <a href="#/arbutus">Arbutus</a>
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    {{catalog.arbutus.description}}
+                </div>
+
+                <div class="card-footer">
+                    <a href="#/arbutus" class="badge badge-pill badge-warning" style="padding: 10px;">
+                        Stops: {{catalog.arbutus.stops.length}}
+                    </a>
+                    <a href="#/arbutus" class="badge badge-pill badge-success" style="padding: 10px;">
+                        Things to Do: {{getNumDestinations(catalog.arbutus)}}
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <a href="#/arundel">Arundel</a>
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    {{catalog.arundel.description}}
+                </div>
+
+                <div class="card-footer">
+                    <a href="#/arundel" class="badge badge-pill badge-warning" style="padding: 10px;">
+                        Stops: {{catalog.arundel.stops.length}}
+                    </a>
+                    <a href="#/arundel" class="badge badge-pill badge-success" style="padding: 10px;">
+                        Things to Do: {{getNumDestinations(catalog.arundel)}}
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <a href="#/catonsville">Catonsville</a>
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    {{catalog.catonsville.description}}
+                </div>
+
+                <div class="card-footer">
+                    <a href="#/catonsville" class="badge badge-pill badge-warning" style="padding: 10px;">
+                        Stops: {{catalog.catonsville.stops.length}}
+                    </a>
+                    <a href="#/catonsville" class="badge badge-pill badge-success" style="padding: 10px;">
+                        Things to Do: {{getNumDestinations(catalog.catonsville)}}
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <a href="#/courtney">Courtney Road</a>
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    {{catalog.courtney.description}}
+                </div>
+
+                <div class="card-footer">
+                    <a href="#/courtney" class="badge badge-pill badge-warning" style="padding: 10px;">
+                        Stops: {{catalog.courtney.stops.length}}
+                    </a>
+                    <a href="#/courtney" class="badge badge-pill badge-success" style="padding: 10px;">
+                        Things to Do: {{getNumDestinations(catalog.courtney)}}
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <a href="#/downtown">Downtown</a>
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    {{catalog.downtown.description}}
+                </div>
+
+                <div class="card-footer">
+                    <a href="#/downtown" class="badge badge-pill badge-warning" style="padding: 10px;">
+                        Stops: {{catalog.downtown.stops.length}}
+                    </a>
+                    <a href="#/downtown" class="badge badge-pill badge-success" style="padding: 10px;">
+                        Things to Do: {{getNumDestinations(catalog.downtown)}}
+                    </a>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <a href="#/route-40">Route 40</a>
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    {{catalog['route-40'].description}}
+                </div>
+
+                <div class="card-footer">
+                    <a href="#/route-40" class="badge badge-pill badge-warning" style="padding: 10px;">
+                        Stops: {{catalog['route-40'].stops.length}}
+                    </a>
+                    <a href="#/route-40" class="badge badge-pill badge-success" style="padding: 10px;">
+                        Things to Do: {{getNumDestinations(catalog['route-40'])}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

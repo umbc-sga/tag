@@ -1,0 +1,102 @@
+<div class="d-none d-sm-block">
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#/">UMBC TAG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#/">Home</a>
+                </li>
+
+                <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" target="_self" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Routes
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#/arbutus">Arbututs</a>
+                        <a class="dropdown-item" href="#/arundel">Arundel</a>
+                        <a class="dropdown-item" href="#/catonsville">Catonsville</a>
+                        <a class="dropdown-item" href="#/courtney">Courtney Road</a>
+                        <a class="dropdown-item" href="#/downtown">Downtown</a>
+                        <a class="dropdown-item" href="#/route-40">Route 40</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#/find">Find Activities</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#/suggest">Suggest Activity</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="d-sm-none">
+    <div class="myNavbar">
+        <a href="#/"><i class="fas fa-home"></i><br>Home</a>
+        <a href="#/find"><i class="fas fa-search"></i><br>Find</a>
+        <a class="active" href="#/routes"><i class="fas fa-map"></i><br>Routes</a>
+        <a href="#/suggest"><i class="fas fa-bullhorn"></i><br>Suggest</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h1 class="text-center mt-3 mb-3">{{route | capitalize}} Bus Route</h1>
+
+    <ul class="timeline">
+        <li ng-repeat="stop in catalog.stops" my-post-repeat-directive>
+            <h4>{{$index + 1}}. {{stop.name}}</h4>
+
+            <ul class="list-group" id="stopTimeline">
+                <li class="list-group-item mb-2" ng-repeat="destination in stop.destinations" id="{{$parent.$index}}-{{$index}}" autoscroll="{{activityLink == $parent.$index + '-' + $index}}">
+                    <span ng-show="!destination.title">
+                        {{destination}}
+                    </span>
+                    <span ng-show="destination.title">
+                        <h5 class="mb-0">
+                            {{destination.title}}
+
+                            <i class="fas fa-grin-alt" style="color:goldenrod" ng-show="destination.categories.includes('Entertainment')"></i>
+                            <i class="fas fa-shopping-bag" style="color: #e75480" ng-show="destination.categories.includes('Shopping')"></i>
+                            <i class="fas fa-utensils" style="color:gray" ng-show="destination.categories.includes('Food')"></i>
+                            <i class="fas fa-tree" style="color:green" ng-show="destination.categories.includes('Outdoor')"></i>
+                            <i class="fas fa-dollar-sign" style="color:green" ng-show="destination.categories.includes('Paid')"></i>
+                            <span class="fa-stack" style="font-size:0.63em;" ng-show="destination.categories.includes('Free')">
+                                <i class="fas fa-dollar-sign fa-stack-1x" style="color:green"></i>
+                                <i class="fas fa-ban fa-stack-2x" style="color:red"></i>
+                            </span>
+                        </h5><hr>
+                        <p class="mb-0" ng-show="destination.address != 'N/A'">
+                            <b>Address: </b>{{destination.address}}
+                        </p>
+                        <p class="mb-0" ng-show="destination.website != 'N/A'">
+                            <b>Website: </b>
+                            <a href="{{destination.website}}">{{destination.website}}</a>
+                        </p>
+                        <p class="mb-0" ng-show="destination.categories && destination.categories != 'N/A'">
+                            <b>Categories: </b>
+                            <span>{{destination.categories.join(", ")}}</span>
+                        </p>
+                        <p class="mb-0" ng-show="destination.additionalInformation != 'N/A'">
+                            <b>Additional Information:</b><br>
+                            <span ng-bind-html="to_trusted(destination.additionalInformation)"></span>
+                        </p>
+
+                        <button class="btn btn-success mt-2" ng-click="copyLink($parent.$index + '-' + $index, $event)">
+                            <i class="fas fa-link"></i> Get Shareable Link
+                        </button>
+                    </span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

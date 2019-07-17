@@ -1,0 +1,21 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "UMBC TAG",
+    "scope": "/tag/",
+    "display": "browser",
+    "start_url": "https://reesdraminski.github.io/tag/",
+    "short_name": "TAG",
+    "theme_color": "#f9b900",
+    "description": "View activities that students can do at the stops on UMBC Transit.",
+    "orientation": "any",
+    "background_color": "black",
+    "related_applications": "",
+    "prefer_related_applications": "false",
+    "icons": [
+        {
+            "src": "img/icon.png",
+            "sizes": "180x180"
+        }
+    ]
+}

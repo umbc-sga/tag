@@ -1,0 +1,116 @@
+<div class="d-none d-sm-block">
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#/">UMBC TAG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#/">Home</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" target="_self" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Routes
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#/arbutus">Arbututs</a>
+                        <a class="dropdown-item" href="#/arundel">Arundel</a>
+                        <a class="dropdown-item" href="#/catonsville">Catonsville</a>
+                        <a class="dropdown-item" href="#/courtney">Courtney Road</a>
+                        <a class="dropdown-item" href="#/downtown">Downtown</a>
+                        <a class="dropdown-item" href="#/route-40">Route 40</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#/find">Find Activities</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#/suggest">Suggest Activity</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="d-sm-none">
+    <div class="myNavbar">
+        <a href="#/"><i class="fas fa-home"></i><br>Home</a>
+        <a href="#/plan"><i class="fas fa-search"></i><br>Find</a>
+        <a href="#/find"><i class="fas fa-map"></i><br>Routes</a>
+        <a class="active" href="#/suggest"><i class="fas fa-bullhorn"></i><br>Suggest</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h1 class='text-center mt-3'>Suggest a Destination</h1>
+    <p>
+        Here you can suggest a place to go to or a thing to do on any stop on any route that UMBC transit takes you to. Enries will be reviewed daily and added if deemed appropriate.
+    </p>
+
+    <form ng-submit="suggestDestination()">
+        <div class="form-group">
+            <label>Title *</label>
+            <input class="form-control" type="text" ng-model="title" required>
+        </div>
+    
+        <div class="form-group">
+            <label>Route *</label>
+            <select class="custom-select" ng-model="route" required>
+                <option value="arbutus">Arbutus</option>
+                <option value="arundel">Arundel</option>
+                <option value="catonsville">Catonsville</option>
+                <option value="courtney">Courtney Road</option>
+                <option value="downtown">Downtown</option>
+                <option value="route-40">Route 40</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label>Stop *</label>
+            <select class="custom-select" ng-model="stopName" required>
+                <option ng-repeat="stop in catalog.stops" value="{{stop.name}}">{{stop.name}}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" type="text" ng-model="address">
+        </div>
+    
+        <div class="form-group">
+            <label>Website</label>
+            <input class="form-control" type="url" ng-model="website">
+        </div>
+
+        <div class="form-group">
+            <label>Categories</label>
+        
+            <select class="form-control" multiple="true" ng-model="categories">
+                <option value="Paid">Paid</option>
+                <option value="Free">Free</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Food">Food</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label>Additional Information</label>
+            <textarea class="form-control" ng-model="additionalInformation"></textarea>
+        </div>
+    
+        <input type="submit" class="btn btn-success" value="Add Destination"></button>
+    </form>
+</div>
+
+<script>
+    $("select[multiple='true']").select2({ theme: 'bootstrap' });
+</script>
